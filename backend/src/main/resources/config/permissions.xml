@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <!--<domain name="member" text="会员管理">
+        <perm name="user" text="会员列表" />
+    </domain>
+    <domain name="posterManger" text="海报管理">
+        <perm name="poster" text="海报列表" />
+    </domain>
+    <domain name="shopManager" text="门店管理">
+        <perm name="shop" text="店铺管理" />
+        <perm name="container" text="货柜管理" />
+    </domain>
+    <domain name="product" text="商品管理">
+        <perm name="type" text="分类管理" />
+    </domain>
+    <domain name="couponManager" text="优惠券管理">
+        <perm name="coupon" text="优惠券列表" />
+    </domain>-->
+    <domain name="sys" text="权限管理">
+        <perm name="user" text="用户管理" />
+        <perm name="role" text="角色管理" />
+        <perm name="version" text="App版本管理" />
+        <perm name="advert" text="广告管理" />
+    </domain>
+</permissions>
