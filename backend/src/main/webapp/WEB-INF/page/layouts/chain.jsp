@@ -79,7 +79,7 @@
             <h5 class="leftpanel-title">导航栏</h5>
             <ul class="nav nav-pills nav-stacked">
                 <li><a href="index.html"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-                <c:forEach var="menu" items="${menubar.mainitems}">
+                <c:forEach var="menu" items="${menubar.menuBar.mainitems}">
                     <c:if test="${menu.hasChildren}">
                         <li class="parent">
                             <a  href="javascript:;">
