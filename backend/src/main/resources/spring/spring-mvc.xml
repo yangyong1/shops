@@ -33,11 +33,11 @@
     <context:component-scan base-package="com.yang.shop.controller" />
     <mvc:resources mapping="/resources/**" location="/resources/" />
     <mvc:view-controller path="index"/>
-    <mvc:interceptors>
+    <!--<mvc:interceptors>
         <bean class="com.yang.framework.util.MenuBarInterceptor">
             <property name="menuBarSource" ref="menuBarSource" />
         </bean>
-    </mvc:interceptors>
+    </mvc:interceptors>-->
     <!-- 采用SpringMVC自带的JSON转换工具，支持@ResponseBody注解 -->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">
@@ -74,8 +74,8 @@
         <property name="suffix" value=".jsp"/>
         <property name="extraPageBeans">
             <map>
-                <!--<entry key="webConfig" value-ref="webConfig" />
-                <entry key="menubar" value-ref="menuBarSource" />-->
+                <entry key="webConfig" value-ref="webConfig" />
+                <entry key="menubar" value-ref="menuBarSource" />
             </map>
         </property>
     </bean>
