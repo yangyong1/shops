@@ -107,12 +107,12 @@
             <version>3.3.2</version>
         </dependency>
 
-        <!-- Local-Jar -->
-        <dependency>
+        <!-- Local-Jar --><!--验证码-->
+        <!--<dependency>
             <groupId>com.google.code</groupId>
             <artifactId>kaptcha</artifactId>
             <version>2.3.2</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
