@@ -2,13 +2,17 @@ package com.yang.framework.help;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @MappedSuperclass
-public class AutoIdModel {
+public class AutoIdModel implements Serializable {
     protected Long id;
     protected String createdAt;
     protected String updatedAt;
 
+    public AutoIdModel(){
+
+    }
     @Id
     @Column(name="id")
     @GeneratedValue(strategy= GenerationType.AUTO)
