@@ -33,11 +33,20 @@ public class UserCtl extends BaseCtl {
      * @param mav
      * @return
      */
-    @RequestMapping("/user/login")
+    @RequestMapping("/login")
     public ModelAndView login(ModelAndView mav){
-  
+        mav.setViewName("login");
         return mav;
     }
 
-
+    /**
+     *index
+     * @param mav
+     * @return
+     */
+    @RequestMapping("/register")
+    public ModelAndView register(ModelAndView mav){
+        mav.setViewName("register");
+        return mav;
+    }
 }

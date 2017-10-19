@@ -29,6 +29,12 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <mvc:interceptors>
+        <bean class="com.yang.framework.util.MenuBarInterceptor">
+            <property name="menuBarSource" ref="menuBarSource" />
+        </bean>
+    </mvc:interceptors>
+
     <context:annotation-config />
     <context:component-scan base-package="com.yang.shop.controller" />
     <mvc:resources mapping="/resources/**" location="/resources/" />
@@ -65,6 +71,8 @@
         <property name="layoutMapping">
             <map>
                 <entry key="/user/login" value="none"/>
+                <entry key="/register" value="none"/>
+                <entry key="/login" value="none"/>
                 <entry key="/error_500" value="none"/>
                 <entry key="/error_404" value="none"/>
                 <entry key="/loginform" value="none"/>
