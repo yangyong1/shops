@@ -36,6 +36,8 @@ public class MemberCard extends AutoIdModel{
 
     public MemberCard(MemberCard other) {
         this.id = other.id;
+        this.createdAt = other.createdAt;
+        this.updatedAt = other.updatedAt;
         this.cardNo = other.cardNo;
         this.phoneNumber = other.phoneNumber;
         this.name = other.name;

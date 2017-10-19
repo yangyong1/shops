@@ -2,6 +2,8 @@ package com.yang.shop.entity.auth;
 
 
 
+import com.yang.framework.help.AutoIdModel;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,24 +11,27 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ManUser")
-public class ManUser {
+public class ManUser extends AutoIdModel {
 
     protected  String username;
-
     protected String password;
-    protected String dispName;
+    protected String dispname;
     protected String mobile;
-    protected String mail;
+    protected String email;
+    protected Integer state = 1;//0表示失效，1表示有效
 
     public ManUser() {
     }
 
     public ManUser(ManUser other) {
+        this.id = other.id;
+        this.createdAt = other.createdAt;
+        this.updatedAt = other.updatedAt;
         this.username = other.username;
         this.password = other.password;
-        this.dispName = other.dispName;
+        this.dispname = other.dispname;
         this.mobile = other.mobile;
-        this.mail = other.mail;
+        this.email = other.email;
     }
 
     public ManUser createBase() {
@@ -35,8 +40,7 @@ public class ManUser {
 
 //  Getters/Setters
 
-    @Id
-    @Column(name="username")
+    @Column(name="username",length = 256)
     public String getUsername() {
         return this.username;
     }
@@ -56,11 +60,11 @@ public class ManUser {
 
     @Column(name="disp_name")
 
-    public String getDispName() {
-        return this.dispName;
+    public String getDispname() {
+        return this.dispname;
     }
-    public void setDispName(String val) {
-        this.dispName = val;
+    public void setDispname(String val) {
+        this.dispname = val;
     }
 
     @Column(name="mobile")
@@ -72,13 +76,21 @@ public class ManUser {
         this.mobile = val;
     }
 
-    @Column(name="mail")
+    @Column(name="email")
 
-    public String getMail() {
-        return this.mail;
+    public String getEmail() {
+        return this.email;
     }
-    public void setMail(String val) {
-        this.mail = val;
+    public void setEmail(String val) {
+        this.email = val;
     }
 
+    @Column(name="state")
+
+    public Integer getState() {
+        return this.state;
+    }
+    public void setState(Integer val) {
+        this.state = val;
+    }
 }
