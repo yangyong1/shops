@@ -1,11 +1,14 @@
-package com.yang.shop.service;
+package com.yang.shop.service.base;
 
 import com.yang.framework.util.DateStyle;
 import com.yang.framework.util.DateUtil;
-import com.yang.shop.dao.ManUserDao;
+import com.yang.shop.dao.ManUserRepo;
 import com.yang.shop.entity.auth.ManUser;
-import com.yang.shop.service.base.BaseSvc;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import util.MD5Util;
 
@@ -13,13 +16,56 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017-06-28.
- */
+* Auto generated file. Modify this file to extend functions.
+* The service class of entity ManUser
+*/
 @Service
 public class ManUserSvc extends BaseSvc {
 
+
     @Autowired
-    private ManUserDao manUserDao;
+    private ManUserRepo repo;
+
+    public void updatePassword(String password, String username) {
+        repo.updatePasswd(password, username);
+    }
+
+    public ManUser findById(String id){
+
+        return repo.findOne(id);
+    }
+
+    public List<ManUser> findAll(){
+        return repo.findAll();
+    }
+    public Page<ManUser> listManUsers(int start,int pageSize){
+        int page = start/pageSize;
+        Pageable pageable = new PageRequest(page, pageSize);
+        Page<ManUser> dataPage = repo.findAll(pageable);
+        return dataPage;
+    }
+
+    public void save(ManUser entity) {
+        String password = entity.getPassword();
+        entity.setPassword(DigestUtils.md5Hex(password));
+        repo.save(entity);
+    }
+
+    public void update(ManUser entity) {
+        ManUser po = repo.findOne(entity.getUsername());
+        po.setDispname(entity.getDispname());
+        po.setMobile(entity.getMobile());
+        String password = entity.getPassword();
+        if(null!=password&&!"".equals(password.trim())){
+            po.setPassword(DigestUtils.md5Hex(password));
+        }
+
+        repo.save(entity);
+    }
+
+    public void del(String userName) {
+        repo.delete(userName);
+    }
 
 
     public ManUser register(String fullName,String email,String password){
@@ -32,7 +78,7 @@ public class ManUserSvc extends BaseSvc {
         String date = DateUtil.DateToString(new Date(), DateStyle.YYYY_MM_DD_HH_MM_SS);
         manUser.setCreatedAt(date);
         manUser.setUpdatedAt(date);
-        ManUser saveManUser = manUserDao.save(manUser);
+        ManUser saveManUser = repo.save(manUser);
         return saveManUser;
     }
     /**
@@ -43,7 +89,7 @@ public class ManUserSvc extends BaseSvc {
     public Boolean checkName(String name){
         Boolean flag = false;
         if(!"".equals(name)){
-            List<ManUser> list = manUserDao.findByUsername(name);
+            List<ManUser> list = repo.findByUsername(name);
             if (list.size() > 0){
                 flag = true;
             }
@@ -59,7 +105,7 @@ public class ManUserSvc extends BaseSvc {
     public Boolean checkEmail(String email){
         Boolean flag = false;
         if(!"".equals(email)){
-            List<ManUser> list = manUserDao.findByEmail(email);
+            List<ManUser> list = repo.findByEmail(email);
             if (list.size() > 0){
                 flag = true;
             }
@@ -68,7 +114,7 @@ public class ManUserSvc extends BaseSvc {
     }
 
     public Boolean checkLogin(String email, String password){
-        List<ManUser> list = manUserDao.findByEmail(email);
+        List<ManUser> list = repo.findByEmail(email);
         if (list.size() == 1){
             ManUser user = list.get(0);
             String userPassword = user.getPassword();
@@ -82,5 +128,4 @@ public class ManUserSvc extends BaseSvc {
         }
 
     }
-
 }

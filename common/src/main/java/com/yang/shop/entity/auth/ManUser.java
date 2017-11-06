@@ -32,6 +32,7 @@ public class ManUser extends AutoIdModel {
         this.dispname = other.dispname;
         this.mobile = other.mobile;
         this.email = other.email;
+        this.state = other.state;
     }
 
     public ManUser createBase() {
