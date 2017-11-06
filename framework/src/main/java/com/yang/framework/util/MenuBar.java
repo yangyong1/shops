@@ -43,7 +43,7 @@ public class MenuBar {
         for(MenuItem mainitem: getMainitems()) {
             List<MenuItem> subItems = new ArrayList<MenuItem>();
             for(MenuItem subItem : mainitem.submenus) {
-                if (StringUtils.isBlank(subItem.getPerm())) {
+                if (StringUtils.isBlank(subItem.getPerm())){
                     subItems.add(subItem);
                 } else if (subject.isPermitted(subItem.getPerm())){
                     subItems.add(subItem);
