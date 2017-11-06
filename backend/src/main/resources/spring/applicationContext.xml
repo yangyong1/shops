@@ -12,7 +12,7 @@
     <context:component-scan base-package="com.yang.shop" />
     <import resource="classpath:spring/applicationContext-Db.xml" />
     <import resource="classpath:spring/applicationContext-Bean.xml" />
-    <!--<import resource="classpath:spring/applicationContext-Shiro.xml" />-->
+    <import resource="classpath:spring/applicationContext-Shiro.xml" />
     <!--<bean class="com.lifeasbook.framework.exception.ExceptionHandlerFactory">
         <property name="handlerList">
             <map>

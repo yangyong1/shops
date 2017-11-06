@@ -2,8 +2,8 @@ package com.yang.shop.controller;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.yang.shop.entity.auth.ManUser;
-import com.yang.shop.service.ManUserSvc;
 import com.yang.shop.service.UserSvc;
+import com.yang.shop.service.base.ManUserSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

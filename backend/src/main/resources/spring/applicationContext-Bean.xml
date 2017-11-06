@@ -12,10 +12,10 @@
 	<bean name="menuBarSource" class="com.yang.framework.util.MenuBarSource">
 		<property name="menuFile" value="classpath:config/menu.xml" />
 	</bean>
-	<bean name="webConfig" class="com.yang.shop.util.WebConfig" ></bean>
-	<!--<bean name="permissionSource" class="com.yang.framework.util.PermissionSource">
+    <bean name="permissionSource" class="com.yang.framework.util.PermissionSource">
 		<property name="permissionFile" value="classpath:config/permissions.xml" />
-	</bean>-->
+	</bean>
+	<bean name="webConfig" class="com.yang.shop.util.WebConfig" ></bean>
 	<bean id="propConfig" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="locations">
 			<list>

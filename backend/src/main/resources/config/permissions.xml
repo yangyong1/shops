@@ -15,7 +15,7 @@
     </domain>
     <domain name="couponManager" text="优惠券管理">
         <perm name="coupon" text="优惠券列表" />
-    </domain>-->
+    </domain>-->u
     <domain name="sys" text="权限管理">
         <perm name="user" text="用户管理" />
         <perm name="role" text="角色管理" />
